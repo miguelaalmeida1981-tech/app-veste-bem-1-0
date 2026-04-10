@@ -1,0 +1,7 @@
+# Build para Android
+eas build --platform android
+
+# Build para iOS
+eas build --platform ios
+
+# Publicar na Play Store/App Store
