@@ -1,0 +1,21 @@
+// Scripts para popular o Firestore
+const products = [
+  {
+    name: "Camiseta Premium",
+    price: 89.90,
+    image: "https://example.com/camiseta.jpg",
+    category: "camisetas",
+    size: ["P", "M", "G", "GG"],
+    color: "Azul",
+    stock: 50
+  },
+  {
+    name: "Calça Jeans",
+    price: 159.90,
+    image: "https://example.com/calca.jpg",
+    category: "calcas",
+    size: ["36", "38", "40", "42"],
+    color: "Azul Escuro",
+    stock: 30
+  }
+];
