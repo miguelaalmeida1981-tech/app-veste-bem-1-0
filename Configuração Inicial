@@ -1,0 +1,9 @@
+npx create-expo-app VesteBemApp
+cd VesteBemApp
+npm install @react-navigation/native @react-navigation/stack @react-navigation/bottom-tabs
+npm install react-native-screens react-native-safe-area-context
+npm install @react-native-firebase/app @react-native-firebase/auth @react-native-firebase/firestore
+npm install stripe/stripe-react-native
+npm install react-native-vector-icons
+npm install @react-native-async-storage/async-storage
+npx expo install expo-image-picker expo-camera expo-constants
