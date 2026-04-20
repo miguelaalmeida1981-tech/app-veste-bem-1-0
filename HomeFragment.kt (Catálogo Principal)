@@ -1,0 +1,77 @@
+package com.vestbem.app.ui.home
+
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.GridLayoutManager
+import com.vestbem.app.R
+import com.vestbem.app.databinding.FragmentHomeBinding
+import com.vestbem.app.ui.adapter.ProdutoAdapter
+
+class HomeFragment : Fragment() {
+    
+    private var _binding: FragmentHomeBinding? = null
+    private val binding get() = _binding!!
+    
+    private val viewModel: HomeViewModel by viewModels()
+    private lateinit var adapter: ProdutoAdapter
+    
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        _binding = FragmentHomeBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+    
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        
+        setupRecyclerView()
+        observeViewModel()
+        setupCategorias()
+    }
+    
+    private fun setupRecyclerView() {
+        adapter = ProdutoAdapter { produto ->
+            // Navegar para detalhe do produto
+        }
+        binding.rvProdutos.apply {
+            layoutManager = GridLayoutManager(context, 2)
+            adapter = this@HomeFragment.adapter
+        }
+    }
+    
+    private fun observeViewModel() {
+        viewModel.produtos.observe(viewLifecycleOwner) { produtos ->
+            adapter.submitList(produtos)
+        }
+    }
+    
+    private fun setupCategorias() {
+        val categorias = listOf("Todas", "Camisetas", "Calças", "Vestidos")
+        binding.chipGroupCategorias.apply {
+            categorias.forEach { categoria ->
+                addView(createChip(categoria))
+            }
+        }
+    }
+    
+    private fun createChip(categoria: String): Chip {
+        return Chip(context).apply {
+            text = categoria
+            setOnClickListener {
+                viewModel.filtrarPorCategoria(categoria.lowercase())
+            }
+        }
+    }
+    
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+}
