@@ -1,0 +1,19 @@
+vestebem/
+├── users/
+│   └── {userId}/
+│       ├── nome: "João Silva"
+│       ├── email: "joao@email.com"
+│       └── carrinho: []
+├── produtos/
+│   └── {produtoId}/
+│       ├── nome: "Camiseta Azul Premium"
+│       ├── preco: 49.90
+│       ├── categoria: "camisetas"
+│       ├── imagemUrl: "https://..."
+│       ├── tamanhos: ["P", "M", "G", "GG"]
+│       ├── cores: ["Azul", "Preto"]
+│       └── estoque: 50
+└── categorias/
+    ├── camisetas: true
+    ├── calças: true
+    └── vestidos: true
